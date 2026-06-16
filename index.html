@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CETAC Juncal · Campaña de médicos derivantes — Popcorn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   POPCORN · BRAND SYSTEM (cliente / sector salud)
+   Violeta eléctrico + cian · tipografía geométrica redondeada
+   ============================================================ */
+:root{
+  --violet-900:#250a4f;
+  --violet-800:#34107a;
+  --violet-700:#4a16a8;
+  --violet-600:#5a18cc;   /* base */
+  --violet-500:#6e28e8;
+  --violet-glow:#7b34f0;
+  --cyan:#1fe8d8;
+  --cyan-bright:#5cf4e8;
+  --cyan-deep:#12b9ad;
+  --ink:#0e0524;
+  --white:#ffffff;
+  --w-80:rgba(255,255,255,.80);
+  --w-65:rgba(255,255,255,.65);
+  --w-45:rgba(255,255,255,.45);
+  --card:rgba(255,255,255,.045);
+  --card-2:rgba(13,4,40,.45);
+  --line:rgba(255,255,255,.14);
+  --line-soft:rgba(255,255,255,.08);
+  --cyan-line:rgba(31,232,216,.35);
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --logo:url('data:image/png;base64,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');
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--violet-600);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  line-height:1.55;
+}
+/* fondo profundo con degradés suaves */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(1200px 700px at 78% -8%, rgba(123,52,240,.55), transparent 60%),
+    radial-gradient(1000px 800px at -10% 110%, rgba(31,232,216,.10), transparent 55%),
+    linear-gradient(160deg,#4d12b0 0%,#5a18cc 42%,#3d0f95 100%);
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+}
+
+h1,h2,h3,h4,.display{font-family:'Poppins',sans-serif;font-style:normal}
+em,i{font-style:normal} /* sin cursivas */
+
+/* ============ HEADER FIJO ============ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 38px;
+  transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease);
+}
+.topbar.scrolled{
+  background:rgba(40,12,100,.72);
+  backdrop-filter:blur(14px);
+  padding:13px 38px;
+  box-shadow:0 1px 0 rgba(255,255,255,.07);
+}
+.brand-tag{
+  font-family:'Poppins';font-weight:600;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--w-65);
+  display:flex;align-items:center;gap:9px;
+}
+.brand-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+
+/* Logo POPCORN oficial */
+.logo{display:flex;align-items:center;gap:10px}
+.logo-img{display:inline-block;background:var(--logo) no-repeat center/contain;width:60px;height:46px}
+.logo-img.close{width:150px;height:112px}
+
+/* ============ PROGRESO + NAV LATERAL ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--cyan),var(--cyan-bright));z-index:100;box-shadow:0 0 14px var(--cyan)}
+.dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:13px}
+.dots a{position:relative;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28);transition:all .3s var(--ease)}
+.dots a:hover{background:var(--w-65);transform:scale(1.25)}
+.dots a.active{background:var(--cyan);box-shadow:0 0 12px var(--cyan);transform:scale(1.35)}
+.dots a span{
+  position:absolute;right:20px;top:50%;transform:translateY(-50%) translateX(6px);
+  white-space:nowrap;font-family:'Poppins';font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--white);background:rgba(20,6,55,.9);padding:5px 10px;border-radius:6px;
+  opacity:0;pointer-events:none;transition:all .25s var(--ease);border:1px solid var(--line-soft);
+}
+.dots a:hover span{opacity:1;transform:translateY(-50%) translateX(0)}
+
+/* ============ SECCIONES ============ */
+section{
+  position:relative;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 38px 96px;
+}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
+
+/* footer micro por sección */
+.sfoot{
+  position:absolute;left:38px;right:38px;bottom:30px;z-index:3;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Poppins';font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--w-45);
+}
+.sfoot .num{color:var(--cyan)}
+
+/* eyebrow */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'Poppins';font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:26px;
+}
+.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+
+/* títulos */
+.h-xl{font-weight:700;font-size:clamp(2.6rem,6.6vw,5.4rem);line-height:1.02;letter-spacing:-.02em}
+.h-lg{font-weight:700;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.015em}
+.h-md{font-weight:600;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.15}
+.cy{color:var(--cyan)}
+.lead{font-size:clamp(1.05rem,1.55vw,1.3rem);color:var(--w-80);max-width:760px;font-weight:400;line-height:1.65}
+.muted{color:var(--w-65)}
+.kicker{font-family:'Poppins';font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--cyan)}
+
+/* ============ ANIMACIONES (scroll reveal) ============ */
+.r{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.r.in{opacity:1;transform:none}
+.r.d1{transition-delay:.09s}.r.d2{transition-delay:.18s}.r.d3{transition-delay:.27s}
+.r.d4{transition-delay:.36s}.r.d5{transition-delay:.45s}.r.d6{transition-delay:.54s}.r.d7{transition-delay:.63s}.r.d8{transition-delay:.72s}
+.scale-in{opacity:0;transform:scale(.94);transition:all .9s var(--ease)}
+.scale-in.in{opacity:1;transform:none}
+
+/* ============ HERO ============ */
+#hero{justify-content:center}
+.hero-orbits{position:absolute;right:-160px;top:50%;transform:translateY(-50%);width:760px;height:760px;z-index:0;opacity:.5;pointer-events:none}
+.hero-orbits div{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12);inset:0}
+.hero-orbits div:nth-child(2){inset:90px}
+.hero-orbits div:nth-child(3){inset:190px}
+.hero-orbits .core{inset:300px;border:none;background:radial-gradient(circle,rgba(31,232,216,.28),transparent 70%)}
+.hero-eyebrow{margin-bottom:30px}
+.hero-title{font-weight:700;font-size:clamp(2.9rem,8vw,6.6rem);line-height:.98;letter-spacing:-.03em;max-width:14ch}
+.hero-sub{margin-top:30px;font-size:clamp(1.05rem,1.7vw,1.4rem);color:var(--w-80);max-width:620px;line-height:1.6}
+.hero-tags{margin-top:38px;display:flex;flex-wrap:wrap;gap:10px}
+.tag{font-family:'Poppins';font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--w-80);border:1px solid var(--line);padding:9px 18px;border-radius:100px;background:rgba(255,255,255,.04)}
+.scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:9px;color:var(--w-45);font-family:'Poppins';font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.scrollcue .mouse{width:22px;height:34px;border:1.5px solid var(--w-45);border-radius:12px;position:relative}
+.scrollcue .mouse::after{content:'';position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:3px;background:var(--cyan);transform:translateX(-50%);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+/* ============ CARDS ============ */
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:20px;padding:30px;
+  transition:transform .4s var(--ease),border-color .4s var(--ease),background .4s var(--ease);
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--cyan-line);background:rgba(255,255,255,.07)}
+.card .ico{
+  width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  background:rgba(31,232,216,.12);border:1px solid var(--cyan-line);color:var(--cyan);margin-bottom:20px;
+}
+.card .ico svg{width:24px;height:24px}
+.card h3{font-size:1.2rem;font-weight:600;margin-bottom:9px}
+.card p{color:var(--w-65);font-size:.96rem;line-height:1.6}
+.card .num-tag{font-family:'Poppins';font-weight:700;font-size:13px;color:var(--cyan);letter-spacing:.1em;margin-bottom:14px;display:block}
+
+/* quotes */
+.quote{border-left:2px solid var(--cyan);padding-left:22px;color:var(--white);font-family:'Poppins';font-weight:500;font-size:clamp(1.1rem,1.7vw,1.5rem);line-height:1.4}
+
+/* stat row */
+.stats{display:flex;flex-wrap:wrap;gap:14px 56px;border-top:1px solid var(--line-soft);padding-top:34px;margin-top:46px}
+.stat .v{font-family:'Poppins';font-weight:700;font-size:clamp(2rem,4vw,3rem);color:var(--cyan);line-height:1}
+.stat .l{font-family:'Poppins';font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--w-65);margin-top:8px}
+
+/* chips público */
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.chip{
+  font-family:'Poppins';font-weight:500;font-size:1rem;padding:14px 24px;border-radius:14px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line-soft);transition:all .35s var(--ease)
+}
+.chip:hover{border-color:var(--cyan-line);color:var(--cyan);transform:translateY(-3px)}
+
+/* ============ DECISION FLOW (¿por qué?) ============ */
+.flowline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:14px;position:relative}
+.flowline .step{position:relative;padding:0 18px}
+.flowline .step .n{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--cyan-line);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:700;margin-bottom:18px;background:rgba(31,232,216,.08)}
+.flowline .step h4{font-size:1.05rem;font-weight:600;margin-bottom:7px}
+.flowline .step p{font-size:.88rem;color:var(--w-65);line-height:1.55}
+.flowline .step::after{content:'';position:absolute;top:23px;left:calc(46px + 14px);right:-6px;height:1.5px;background:linear-gradient(90deg,var(--cyan-line),transparent);transform-origin:left;transition:transform 1s var(--ease) .3s;transform:scaleX(0)}
+.flowline.in .step::after{transform:scaleX(1)}
+.flowline .step:last-child::after{display:none}
+
+.bigstatement{
+  margin-top:8px;font-family:'Poppins';font-weight:600;font-size:clamp(1.5rem,3.2vw,2.5rem);line-height:1.2;letter-spacing:-.01em;max-width:18ch
+}
+
+/* ============ PROCESO / FLUJO ESTRATÉGICO ============ */
+.pipe{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin-top:10px}
+.pipe .node{
+  flex:1;min-width:140px;background:var(--card);border:1px solid var(--line-soft);border-radius:16px;padding:22px 18px;text-align:center;
+  position:relative;transition:all .4s var(--ease)
+}
+.pipe .node:hover{border-color:var(--cyan-line);transform:translateY(-5px)}
+.pipe .node .k{font-family:'Poppins';font-weight:700;font-size:12px;color:var(--cyan);letter-spacing:.1em;display:block;margin-bottom:9px}
+.pipe .node .t{font-family:'Poppins';font-weight:600;font-size:1.02rem}
+.pipe .node p{font-size:.8rem;color:var(--w-45);margin-top:6px;line-height:1.4}
+.pipe .arrow{display:flex;align-items:center;color:var(--cyan);opacity:.6}
+
+/* ============ PRODUCCIÓN: MULTIPLICACIÓN ============ */
+.multiplier{display:grid;grid-template-columns:300px 1fr;gap:46px;align-items:center}
+.source{
+  background:linear-gradient(160deg,rgba(31,232,216,.16),rgba(31,232,216,.03));
+  border:1.5px solid var(--cyan-line);border-radius:22px;padding:38px 30px;text-align:center;
+}
+.source .big{font-family:'Poppins';font-weight:700;font-size:3.4rem;color:var(--cyan);line-height:1}
+.source h3{font-size:1.3rem;font-weight:600;margin:10px 0 6px}
+.source p{color:var(--w-65);font-size:.92rem}
+.outputs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.out{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:18px 14px;text-align:center;
+  font-family:'Poppins';font-weight:500;font-size:.92rem;transition:all .35s var(--ease)
+}
+.out:hover{border-color:var(--cyan-line);color:var(--cyan);transform:translateY(-4px)}
+.out .oi{width:32px;height:32px;margin:0 auto 10px;color:var(--cyan);opacity:.85}
+.out .oi svg{width:100%;height:100%}
+
+/* ============ CÁPSULAS / GUIONES ============ */
+.capsule{
+  background:var(--card-2);border:1px solid var(--line-soft);border-radius:20px;padding:32px;
+  display:flex;flex-direction:column;transition:all .4s var(--ease);position:relative;overflow:hidden;height:100%
+}
+.capsule:hover{border-color:var(--cyan-line);transform:translateY(-6px)}
+.capsule .cap-n{font-family:'Poppins';font-weight:700;font-size:13px;color:var(--cyan);letter-spacing:.14em}
+.capsule h3{font-size:1.3rem;font-weight:600;margin:12px 0 22px;line-height:1.2}
+.cap-block{margin-bottom:16px}
+.cap-block .lbl{font-family:'Poppins';font-weight:700;font-size:10px;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:5px}
+.cap-block p{font-size:.94rem;color:var(--w-80);line-height:1.5}
+.cap-note{margin-top:auto;padding-top:18px;border-top:1px solid var(--line-soft);font-size:.8rem;color:var(--w-45);line-height:1.5}
+
+/* ============ HOOKS ============ */
+.hooklist{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.hook{
+  display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line-soft);
+  border-radius:16px;padding:24px 26px;transition:all .4s var(--ease)
+}
+.hook:hover{border-color:var(--cyan-line);background:rgba(255,255,255,.06);transform:translateX(5px)}
+.hook .play{flex:none;width:42px;height:42px;border-radius:50%;background:rgba(31,232,216,.14);border:1px solid var(--cyan-line);color:var(--cyan);display:flex;align-items:center;justify-content:center}
+.hook .play svg{width:18px;height:18px}
+.hook .qt{font-family:'Poppins';font-weight:500;font-size:1.04rem;line-height:1.4}
+.hook .sec{font-family:'Poppins';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--w-45);margin-top:6px}
+
+/* timeline barra de atención hook */
+.attn{display:flex;height:60px;border-radius:12px;overflow:hidden;margin-top:18px;border:1px solid var(--line-soft)}
+.attn .seg{display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-size:11px;font-weight:600;letter-spacing:.05em}
+.attn .s1{flex:1.2;background:rgba(31,232,216,.22);color:var(--cyan)}
+.attn .s2{flex:4;background:rgba(255,255,255,.04);color:var(--w-45)}
+
+/* ============ LINKEDIN INVERSIÓN ============ */
+.invest{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.invest-card{
+  background:linear-gradient(160deg,rgba(31,232,216,.14),rgba(13,4,40,.4));
+  border:1.5px solid var(--cyan-line);border-radius:24px;padding:40px;
+}
+.invest-card .amount{font-family:'Poppins';font-weight:700;font-size:clamp(2.6rem,5vw,3.8rem);color:var(--white);line-height:1}
+.invest-card .amount .imp{font-size:1.1rem;color:var(--cyan);font-weight:600;display:block;margin-top:6px;letter-spacing:.02em}
+.invest-card .per{color:var(--w-65);font-family:'Poppins';font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-bottom:14px;display:block}
+.invest-card hr{border:none;border-top:1px solid var(--line-soft);margin:26px 0}
+.eqrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.eqrow .b{background:rgba(255,255,255,.06);border:1px solid var(--line-soft);border-radius:12px;padding:14px 18px;text-align:center}
+.eqrow .b .bv{font-family:'Poppins';font-weight:700;font-size:1.3rem;color:var(--cyan)}
+.eqrow .b .bl{font-size:11px;color:var(--w-45);font-family:'Poppins';letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.eqrow .op{font-family:'Poppins';font-weight:700;color:var(--w-45);font-size:1.3rem}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:18px}
+.bullets li{display:flex;gap:14px;align-items:flex-start}
+.bullets li .bi{flex:none;width:26px;height:26px;border-radius:8px;background:rgba(31,232,216,.12);border:1px solid var(--cyan-line);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:700;font-size:13px;margin-top:2px}
+.bullets li p{color:var(--w-80);font-size:1rem;line-height:1.55}
+.bullets li p b{color:var(--white);font-weight:600;font-family:'Poppins'}
+
+/* ============ LANDING WIREFRAME ============ */
+.landing{display:grid;grid-template-columns:.92fr 1.08fr;gap:46px;align-items:center}
+.wf{background:rgba(13,4,40,.5);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:11px}
+.wf-bar{display:flex;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:4px}
+.wf-bar span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.wf-row{background:rgba(255,255,255,.05);border-radius:9px}
+.wf-hero{height:74px;background:linear-gradient(110deg,rgba(31,232,216,.22),rgba(110,40,232,.22));position:relative;border-radius:9px;display:flex;align-items:center;padding:0 18px}
+.wf-hero .l1{height:11px;width:60%;background:rgba(255,255,255,.55);border-radius:4px}
+.wf-hero .cta{position:absolute;right:16px;height:24px;width:96px;background:var(--cyan);border-radius:6px}
+.wf-3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.wf-3 div{height:54px;background:rgba(255,255,255,.05);border-radius:9px;border:1px solid var(--line-soft)}
+.wf-form{height:96px;background:rgba(31,232,216,.07);border:1px dashed var(--cyan-line);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-size:12px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase}
+.lp-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:10px 0 24px}
+.lp-list li{display:flex;gap:12px;align-items:center;color:var(--w-80)}
+.lp-list li svg{width:20px;height:20px;color:var(--cyan);flex:none}
+.note-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:100px;padding:11px 20px;font-size:.86rem;color:var(--w-65)}
+.note-pill b{color:var(--cyan);font-family:'Poppins';font-weight:600}
+
+/* ============ PRODUCCIÓN PROFESIONAL ============ */
+.evo{position:relative;overflow:hidden;background:linear-gradient(150deg,rgba(31,232,216,.10),rgba(13,4,40,.35));border:1px solid var(--cyan-line);border-radius:24px;padding:clamp(34px,5vw,60px)}
+.evo .evo-bg{position:absolute;inset:0;z-index:0}
+.evo .evo-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(.42) contrast(1.05)}
+.evo .evo-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(40,12,100,.93),rgba(40,12,100,.60))}
+.evo>*:not(.evo-bg){position:relative;z-index:1}
+.evo .badge{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins';font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--cyan);margin-bottom:24px;border:1px solid var(--cyan-line);padding:8px 16px;border-radius:100px}
+.evo blockquote{font-family:'Poppins';font-weight:500;font-size:clamp(1.3rem,2.6vw,2.1rem);line-height:1.35;letter-spacing:-.01em;max-width:24ch}
+.evo .sign{margin-top:26px;color:var(--w-65);font-size:.98rem;max-width:620px}
+
+/* ============ CTA PLACEHOLDER ============ */
+.cta-ph{
+  border:1.5px dashed var(--cyan-line);border-radius:22px;padding:clamp(40px,6vw,72px);text-align:center;
+  background:rgba(31,232,216,.04)
+}
+.cta-slots{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:30px}
+.cta-slot{border:1px solid var(--line);border-radius:100px;padding:16px 40px;font-family:'Poppins';font-weight:600;color:var(--w-45);background:rgba(255,255,255,.03)}
+.cta-slot.primary{background:rgba(31,232,216,.12);border-color:var(--cyan-line);color:var(--cyan)}
+
+/* ============ CIERRE ============ */
+#cierre{text-align:center;align-items:center}
+#cierre .wrap{display:flex;flex-direction:column;align-items:center}
+.close-title{font-family:'Poppins';font-weight:700;font-size:clamp(2rem,5vw,4rem);line-height:1.08;letter-spacing:-.02em;max-width:20ch}
+.close-sign{margin-top:46px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.close-sign .c-logo{display:flex;align-items:center;gap:10px}
+.close-sign .c-word{font-family:'Poppins';font-weight:800;font-size:22px;letter-spacing:.06em}
+.close-tag{font-family:'Poppins';font-weight:500;color:var(--cyan);letter-spacing:.04em;font-size:1.05rem;margin-top:6px}
+
+/* ============ FOTOGRAFÍA (tratamiento on-brand) ============ */
+.photo,.media{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line-soft)}
+.media{aspect-ratio:4/3}
+.media.wide{aspect-ratio:16/9}
+.media.tall{aspect-ratio:3/4}
+.photo img,.media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.82) contrast(1.06) brightness(.93)}
+.media::after,.photo::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(155deg,rgba(74,18,168,.48),rgba(18,5,40,.26) 55%,rgba(31,232,216,.12))}
+.media .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:32px}
+
+/* fondos full-bleed (hero / cierre) */
+.bg-photo{position:absolute;inset:0;z-index:0;overflow:hidden}
+.bg-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.66) contrast(1.05)}
+.bg-photo.hero img{object-position:58% center}
+.bg-photo.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(63,15,149,.975) 24%,rgba(74,18,168,.60) 58%,rgba(31,232,216,.10))}
+.bg-photo.center::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 42%,rgba(74,18,168,.72),rgba(18,5,40,.94))}
+
+/* foto en cabecera de cápsula */
+.cap-photo{margin:-32px -32px 24px;height:200px;position:relative;overflow:hidden}
+.cap-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:saturate(.84) contrast(1.05)}
+.cap-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,12,100,.12),rgba(13,4,40,.9))}
+.cap-photo .cap-n{position:absolute;left:24px;bottom:16px;z-index:2;margin:0}
+
+/* filas a dos columnas con imagen */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.split.rev>.col-img{order:-1}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  .split{grid-template-columns:1fr;gap:28px}
+  .split.rev>.col-img{order:0}
+  .cap-photo{height:180px}
+  .dots{display:none}
+  section{padding:104px 22px 84px}
+  .sfoot{left:22px;right:22px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .flowline{grid-template-columns:1fr;gap:24px}
+  .flowline .step::after{display:none}
+  .multiplier{grid-template-columns:1fr;gap:28px}
+  .outputs{grid-template-columns:repeat(2,1fr)}
+  .invest,.landing{grid-template-columns:1fr;gap:30px}
+  .hooklist{grid-template-columns:1fr}
+  .pipe .arrow{transform:rotate(90deg)}
+  .topbar{padding:16px 22px}
+  .topbar .brand-tag{display:none}
+}
+@media(max-width:560px){
+  .outputs{grid-template-columns:1fr 1fr}
+  .stats{gap:20px 32px}
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESO -->
+<div class="progress" id="prog"></div>
+
+<!-- HEADER -->
+<header class="topbar" id="topbar">
+  <div class="brand-tag"><span class="dot"></span>Propuesta estratégica · CETAC Juncal</div>
+  <div class="logo">
+    <span class="logo-img" role="img" aria-label="Popcorn"></span>
+  </div>
+</header>
+
+<!-- NAV LATERAL -->
+<nav class="dots" id="dots"></nav>
+
+<!-- ============ 1 · HERO ============ -->
+<section id="hero" data-label="Inicio">
+  <div class="bg-photo hero"><img src="img/hero.jpg" alt="Médico en CETAC Juncal" loading="eager"></div>
+  <div class="hero-orbits"><div></div><div></div><div></div><div class="core"></div></div>
+  <div class="wrap">
+    <div class="eyebrow hero-eyebrow r">CETAC Juncal × Popcorn · Campaña 2026</div>
+    <h1 class="hero-title r d1">La primera opción<br>cuando hay que <span class="cy">derivar.</span></h1>
+    <p class="hero-sub r d3">Una estrategia integral para que más médicos elijan a CETAC en el momento exacto en que deciden derivar un paciente oncológico.</p>
+    <div class="hero-tags r d4">
+      <span class="tag">Estrategia</span>
+      <span class="tag">Contenidos</span>
+      <span class="tag">Paid Media</span>
+      <span class="tag">Producción audiovisual</span>
+      <span class="tag">Landing</span>
+    </div>
+  </div>
+  <div class="scrollcue"><div class="mouse"></div>Desliz&aacute; para comenzar</div>
+</section>
+
+<!-- ============ 2 · PUNTO DE PARTIDA ============ -->
+<section id="partida" data-label="Punto de partida">
+  <div class="wrap">
+    <div class="grid g2" style="align-items:center;gap:56px">
+      <div>
+        <div class="eyebrow r">El punto de partida</div>
+        <h2 class="h-lg r d1">La tecnología ya no<br>es la que <span class="cy">diferencia.</span></h2>
+        <p class="lead r d2" style="margin-top:24px">Un oncólogo sabe que la mejor tecnología hoy está en muchos centros. Lo que no encuentra con facilidad es un socio que garantice que, una vez que deriva, el proceso simplemente funcione.</p>
+      </div>
+      <div class="r d3">
+        <div class="media wide">
+          <img src="img/tech.jpg" alt="Tecnología y gestión médica">
+          <div class="cap"><div class="quote">&ldquo;En CETAC trabajamos para que sus pacientes accedan al tratamiento lo antes posible, mientras nosotros nos ocupamos de las autorizaciones.&rdquo;</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Popcorn · Marketing &amp; Comunicación</span><span class="num">01 — Contexto</span></div>
+</section>
+
+<!-- ============ 3 · ¿POR QUÉ ESTA CAMPAÑA? ============ -->
+<section id="porque" data-label="¿Por qué esta campaña?">
+  <div class="wrap">
+    <div class="eyebrow r">¿Por qué esta campaña?</div>
+    <h2 class="h-lg r d1" style="max-width:16ch">El desafío no es que<br>conozcan a <span class="cy">CETAC.</span></h2>
+    <p class="lead r d2" style="margin-top:22px">Cuando llega el momento de derivar, el médico decide en segundos y casi siempre desde la memoria. El verdadero desafío es ser <b style="color:#fff;font-family:Poppins;font-weight:600">la primera opción que aparece en su mente.</b></p>
+
+    <div class="flowline r d3" id="decision" style="margin-top:54px">
+      <div class="step">
+        <div class="n">1</div>
+        <h4>Llega el paciente</h4>
+        <p>El médico confirma que necesita un estudio o tratamiento oncológico.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h4>Decide en segundos</h4>
+        <p>No compara folletos. Recuerda a quién le tiene confianza.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h4>Elige respaldo</h4>
+        <p>Prioriza rapidez, autorizaciones resueltas y comunicación.</p>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <h4>Deriva</h4>
+        <p>Vuelve a elegir al mismo centro cada vez que la experiencia lo respalda.</p>
+      </div>
+    </div>
+
+    <div class="stats r d4">
+      <div class="stat"><div class="v">Confianza</div><div class="l">Lo que más pesa al decidir</div></div>
+      <div class="stat"><div class="v">Rapidez</div><div class="l">El tiempo es clínico, no solo administrativo</div></div>
+      <div class="stat"><div class="v">Respaldo</div><div class="l">Un equipo, no una sola mirada</div></div>
+    </div>
+  </div>
+  <div class="sfoot"><span>El médico decide desde la memoria</span><span class="num">02 — Justificación</span></div>
+</section>
+
+<!-- ============ 4 · OBJETIVOS ============ -->
+<section id="objetivos" data-label="Objetivos">
+  <div class="wrap">
+    <div class="eyebrow r">Objetivos de campaña</div>
+    <h2 class="h-lg r d1">Qué buscamos <span class="cy">lograr.</span></h2>
+    <p class="lead r d2" style="margin-top:20px">Posicionar a CETAC como el aliado estratégico del médico derivante: no por la tecnología, sino por el acompañamiento integral.</p>
+
+    <div class="grid g4 r d3" style="margin-top:48px">
+      <div class="card">
+        <span class="num-tag">01</span>
+        <h3>Reconocimiento</h3>
+        <p>Aumentar la presencia de CETAC entre los especialistas que derivan.</p>
+      </div>
+      <div class="card">
+        <span class="num-tag">02</span>
+        <h3>Relaciones</h3>
+        <p>Generar nuevos vínculos profesionales con médicos derivantes.</p>
+      </div>
+      <div class="card">
+        <span class="num-tag">03</span>
+        <h3>Conversaciones</h3>
+        <p>Impulsar consultas y reuniones institucionales concretas.</p>
+      </div>
+      <div class="card">
+        <span class="num-tag">04</span>
+        <h3>Derivaciones</h3>
+        <p>Incrementar las derivaciones a CETAC a mediano plazo.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Lenguaje de negocio, no de marketing</span><span class="num">03 — Objetivos</span></div>
+</section>
+
+<!-- ============ 5 · PÚBLICO ============ -->
+<section id="publico" data-label="Público objetivo">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="eyebrow r">Público objetivo</div>
+        <h2 class="h-lg r d1">¿A quién le <span class="cy">hablamos?</span></h2>
+        <p class="lead r d2" style="margin-top:20px">Médicos que habitualmente derivan estudios oncológicos, donde el tiempo y la gestión son críticos.</p>
+        <div class="chips r d3" style="margin-top:34px">
+          <span class="chip">Oncólogos</span>
+          <span class="chip">Hematólogos</span>
+          <span class="chip">Mastólogos</span>
+          <span class="chip">Cirujanos oncológicos</span>
+          <span class="chip">Urólogos</span>
+          <span class="chip">Gastroenterólogos</span>
+          <span class="chip">Neumonólogos</span>
+          <span class="chip">Jefes de servicio</span>
+          <span class="chip">Directores médicos</span>
+        </div>
+      </div>
+      <div class="col-img r d2"><div class="media tall"><img src="img/equipo.jpg" alt="Equipo médico interdisciplinario"></div></div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Especialistas con poder de derivación</span><span class="num">04 — Audiencia</span></div>
+</section>
+
+<!-- ============ 6 · INSIGHT ============ -->
+<section id="insight" data-label="Insight">
+  <div class="wrap">
+    <div class="split" style="margin-bottom:46px">
+      <div>
+        <div class="eyebrow r">El insight</div>
+        <h2 class="h-lg r d1" style="max-width:18ch">Los médicos ya tienen dónde derivar.<br>Lo que buscan es <span class="cy">confianza.</span></h2>
+        <p class="lead r d2" style="margin-top:22px">Derivar un paciente es un acto de confianza. El médico necesita saber que, cuando suelta el caso, no lo pierde.</p>
+      </div>
+      <div class="col-img r d2"><div class="media"><img src="img/consulta.jpg" alt="Médico en consulta con paciente"></div></div>
+    </div>
+
+    <div class="grid g4 r d3">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
+        <h3>Rapidez</h3>
+        <p>Que el paciente sea atendido pronto.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
+        <h3>Autorizaciones</h3>
+        <p>Que los trámites estén resueltos.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Información</h3>
+        <p>Recibir novedades durante el tratamiento.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Seguir presente</h3>
+        <p>Continuar siendo parte del proceso.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>El eje de toda la campaña</span><span class="num">05 — Insight</span></div>
+</section>
+
+<!-- ============ 7 · CONCEPTO CREATIVO ============ -->
+<section id="concepto" data-label="Concepto creativo">
+  <div class="wrap">
+    <div class="eyebrow r">Concepto creativo</div>
+    <h2 class="h-lg r d1" style="max-width:20ch">CETAC, el aliado que acelera el acceso<br>al <span class="cy">tratamiento oncológico.</span></h2>
+    <p class="lead r d2" style="margin-top:20px">Una idea fuerza, tres ángulos para hablarle al médico según el momento y el canal.</p>
+
+    <div class="grid g3 r d3" style="margin-top:48px">
+      <div class="card">
+        <span class="num-tag">01 · Confianza</span>
+        <h3>&ldquo;La confianza también se deriva.&rdquo;</h3>
+        <p>Vínculo profesional y responsabilidad compartida entre médicos.</p>
+      </div>
+      <div class="card">
+        <span class="num-tag">02 · Urgencia</span>
+        <h3>&ldquo;Rapidez y precisión.&rdquo;</h3>
+        <p>En oncología el tiempo importa. Directo y diferenciador.</p>
+      </div>
+      <div class="card">
+        <span class="num-tag">03 · Performance</span>
+        <h3>&ldquo;Menos trámites. Más tratamiento.&rdquo;</h3>
+        <p>Las autorizaciones como diferencial. Potente para paid media.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Una idea fuerza, tres ángulos</span><span class="num">06 — Concepto</span></div>
+</section>
+
+<!-- ============ 8 · PROPUESTA DE VALOR ============ -->
+<section id="valor" data-label="Propuesta de valor">
+  <div class="wrap">
+    <div class="eyebrow r">Propuesta de valor</div>
+    <h2 class="h-lg r d1">Tres compromisos <span class="cy">concretos.</span></h2>
+    <div class="grid g3 r d2" style="margin-top:48px">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Rapidez</h3>
+        <p>Procesos orientados a reducir tiempos entre diagnóstico e inicio de tratamiento.</p>
+        <div class="quote" style="margin-top:18px;font-size:1rem">Cuando el tiempo importa, cada día cuenta.</div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
+        <h3>Gestión integral</h3>
+        <p>Acompañamiento y gestión de autorizaciones con obras sociales y prepagas.</p>
+        <div class="quote" style="margin-top:18px;font-size:1rem">Nos ocupamos de los trámites para que usted se enfoque en sus pacientes.</div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h3>Atención integral</h3>
+        <p>Diagnóstico, tratamiento y seguimiento dentro de un mismo ecosistema asistencial.</p>
+        <div class="quote" style="margin-top:18px;font-size:1rem">Menos barreras. Más continuidad asistencial.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Lo que CETAC garantiza al médico</span><span class="num">07 — Valor</span></div>
+</section>
+
+<!-- ============ 9 · FLUJO ESTRATÉGICO ============ -->
+<section id="flujo" data-label="El recorrido">
+  <div class="wrap">
+    <div class="eyebrow r">El hilo conductor</div>
+    <h2 class="h-lg r d1">Una estrategia, <span class="cy">conectada.</span></h2>
+    <p class="lead r d2" style="margin-top:20px">Cada pieza tiene un rol y conduce a la siguiente. Del objetivo de negocio hasta la derivación concreta.</p>
+
+    <div class="pipe r d3" style="margin-top:50px">
+      <div class="node"><span class="k">01</span><span class="t">Objetivo</span><p>Más derivaciones</p></div>
+      <div class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="k">02</span><span class="t">Mensaje</span><p>Confianza y respaldo</p></div>
+      <div class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="k">03</span><span class="t">Contenido</span><p>Video médico a médico</p></div>
+      <div class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="k">04</span><span class="t">Distribución</span><p>LinkedIn Ads</p></div>
+      <div class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="k">05</span><span class="t">Captación</span><p>Landing dedicada</p></div>
+      <div class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="k">06</span><span class="t">Conversión</span><p>Nueva derivación</p></div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Objetivo → Conversión</span><span class="num">08 — Estrategia</span></div>
+</section>
+
+<!-- ============ 10 · ESTRATEGIA DE CONTENIDOS ============ -->
+<section id="contenidos" data-label="Estrategia de contenidos">
+  <div class="wrap">
+    <div class="eyebrow r">Estrategia de contenidos</div>
+    <h2 class="h-lg r d1">Tres fases en <span class="cy">LinkedIn.</span></h2>
+    <p class="lead r d2" style="margin-top:20px">Una secuencia que lleva al médico del primer contacto a la decisión de derivar.</p>
+
+    <div class="grid g3 r d3" style="margin-top:48px">
+      <div class="card">
+        <span class="num-tag">Fase 1</span>
+        <h3>Reconocimiento</h3>
+        <p style="margin-bottom:16px">Médicos hablándole a médicos. Cápsulas de video que generan confianza profesional.</p>
+        <ul class="lp-list" style="margin:0">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Comité interdisciplinario</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Derivar no es perder el caso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>No existen tratamientos estándar</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="num-tag">Fase 2</span>
+        <h3>Autoridad médica</h3>
+        <p style="margin-bottom:16px">Contenidos que instalan a CETAC como referente clínico y explican su diferencial.</p>
+        <ul class="lp-list" style="margin:0">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>¿Por qué el tiempo es clave?</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Cómo agilizamos el inicio</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Gestión de autorizaciones</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="num-tag">Fase 3</span>
+        <h3>Recordación</h3>
+        <p style="margin-bottom:16px">Shorts y reutilización de contenido con hooks para alcanzar nuevas audiencias.</p>
+        <ul class="lp-list" style="margin:0">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>De la indicación al inicio</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Qué es atención integral</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Acompañamiento en autorizaciones</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Reconocimiento → Autoridad → Recordación</span><span class="num">09 — Contenidos</span></div>
+</section>
+
+<!-- ============ 11 · PRODUCCIÓN AUDIOVISUAL ============ -->
+<section id="produccion" data-label="Producción audiovisual">
+  <div class="wrap">
+    <div class="eyebrow r">Producción audiovisual</div>
+    <h2 class="h-lg r d1" style="max-width:18ch">Una jornada de grabación.<br>Un <span class="cy">ecosistema</span> de contenidos.</h2>
+    <p class="lead r d2" style="margin-top:20px">De cada grabación profesional surgen múltiples piezas. Una sola jornada genera contenido para varios meses de campaña.</p>
+
+    <div class="multiplier r d3" style="margin-top:50px">
+      <div class="source scale-in">
+        <div class="big">1</div>
+        <h3>Jornada de grabación</h3>
+        <p>Médicos reales, a cámara, en CETAC.</p>
+      </div>
+      <div class="outputs">
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></div>Video completo</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 8l4 2-4 2z" fill="currentColor" stroke="none"/></svg></div>Reels</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 10l3 2-3 2z" fill="currentColor" stroke="none"/></svg></div>Shorts</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z" fill="currentColor" stroke="none"/></svg></div>Hooks</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>Clips</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg></div>LinkedIn</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8-8 18-2-7-8-3z" fill="currentColor" stroke="none"/></svg></div>Campañas</div>
+        <div class="out"><div class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>Remarketing</div>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Eficiencia de producción</span><span class="num">10 — Audiovisual</span></div>
+</section>
+
+<!-- ============ 12 · CÁPSULAS / GUIONES ============ -->
+<section id="capsulas" data-label="Las cápsulas">
+  <div class="wrap">
+    <div class="eyebrow r">Los guiones</div>
+    <h2 class="h-lg r d1">Tres cápsulas, una <span class="cy">conversación.</span></h2>
+    <p class="lead r d2" style="margin-top:20px">Videos cortos (60–90 segundos). Un médico, directo a cámara. Cada guion tiene hook, desarrollo y cierre.</p>
+
+    <div class="grid g3 r d3" style="margin-top:46px">
+      <div class="capsule">
+        <div class="cap-photo"><img src="img/doc2.jpg" alt="Médico a cámara"><span class="cap-n">Cápsula 01</span></div>
+        <h3>Ningún paciente depende de una sola mirada</h3>
+        <div class="cap-block"><span class="lbl">Hook</span><p>En CETAC ningún paciente depende de la opinión de un solo médico.</p></div>
+        <div class="cap-block"><span class="lbl">Desarrollo</span><p>Esto no es un trámite administrativo. Es la forma en que tomamos decisiones.</p></div>
+        <div class="cap-block"><span class="lbl">Cierre</span><p>Cuando usted deriva un paciente a CETAC, no accede a un médico. Accede a un equipo.</p></div>
+        <p class="cap-note">Tono sereno y directo, nunca solemne. El médico puede hablar con naturalidad.</p>
+      </div>
+      <div class="capsule">
+        <div class="cap-photo"><img src="img/doc1.jpg" alt="Médico a cámara"><span class="cap-n">Cápsula 02</span></div>
+        <h3>Derivar no significa perder el caso</h3>
+        <div class="cap-block"><span class="lbl">Hook</span><p>Muchos médicos me dicen lo mismo: que sienten que al derivar pierden de vista al paciente.</p></div>
+        <div class="cap-block"><span class="lbl">Desarrollo</span><p>Desde el momento en que ingresa un paciente derivado por usted, mantenemos comunicación activa con el profesional de origen.</p></div>
+        <div class="cap-block"><span class="lbl">Cierre</span><p>Derivar a CETAC no es soltar el caso. Es sumar un equipo que ayuda a que todo suceda.</p></div>
+        <p class="cap-note">La cápsula más importante para la captación directa.</p>
+      </div>
+      <div class="capsule">
+        <div class="cap-photo"><img src="img/doc3.jpg" alt="Médico a cámara" style="object-position:center 50%"><span class="cap-n">Cápsula 03</span></div>
+        <h3>No existen tratamientos estándar</h3>
+        <div class="cap-block"><span class="lbl">Hook</span><p>En oncología no existen los tratamientos estándar.</p></div>
+        <div class="cap-block"><span class="lbl">Desarrollo</span><p>Por eso en CETAC el plan de tratamiento no se define desde un protocolo genérico. Se define desde el paciente.</p></div>
+        <div class="cap-block"><span class="lbl">Cierre</span><p>Tratamos personas. Y lo hacemos con la mejor tecnología de la región y el respaldo de un equipo interdisciplinario.</p></div>
+        <p class="cap-note">Estructura fija: paciente primero, tecnología después.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Médicos hablándole a médicos</span><span class="num">11 — Guiones</span></div>
+</section>
+
+<!-- ============ 13 · HOOKS ============ -->
+<section id="hooks" data-label="Hooks">
+  <div class="wrap">
+    <div class="eyebrow r">Hooks</div>
+    <h2 class="h-lg r d1">Los primeros <span class="cy">3 segundos</span> deciden.</h2>
+    <p class="lead r d2" style="margin-top:20px">El médico decide en un instante si sigue mirando. El hook es lo que detiene el scroll y abre la conversación.</p>
+
+    <div class="attn r d2" style="max-width:680px">
+      <div class="seg s1">0–3 s · El hook</div>
+      <div class="seg s2">El resto del mensaje</div>
+    </div>
+
+    <div class="hooklist r d3" style="margin-top:40px">
+      <div class="hook"><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div><div class="qt">&ldquo;Muchos médicos creen que derivar es perder el control...&rdquo;</div><div class="sec">Reel · Captación</div></div></div>
+      <div class="hook"><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div><div class="qt">&ldquo;¿Qué pasa con un paciente apenas llega a CETAC?&rdquo;</div><div class="sec">Short · Autoridad</div></div></div>
+      <div class="hook"><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div><div class="qt">&ldquo;Cada semana cuenta.&rdquo;</div><div class="sec">Anuncio · Urgencia</div></div></div>
+      <div class="hook"><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div><div class="qt">&ldquo;Un paciente nunca depende de una sola mirada.&rdquo;</div><div class="sec">Reel · Confianza</div></div></div>
+      <div class="hook"><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div><div class="qt">&ldquo;La tecnología sola no alcanza.&rdquo;</div><div class="sec">Short · Diferencial</div></div></div>
+      <div class="hook"><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div><div class="qt">&ldquo;Derivar a CETAC no es soltar el caso.&rdquo;</div><div class="sec">Anuncio · Captación</div></div></div>
+    </div>
+  </div>
+  <div class="sfoot"><span>Extraídos de los guiones, sin modificarlos</span><span class="num">12 — Hooks</span></div>
+</section>
+
+<!-- ============ 14 · LINKEDIN ADS ============ -->
+<section id="linkedin" data-label="LinkedIn Ads">
+  <div class="wrap">
+    <div class="eyebrow r">LinkedIn Ads</div>
+    <h2 class="h-lg r d1" style="max-width:16ch">El único lugar donde llegamos<br>directo al <span class="cy">médico.</span></h2>
+    <p class="lead r d2" style="margin-top:20px">LinkedIn permite segmentar por especialidad y cargo. Es el canal ideal para hablarle solo a quienes derivan.</p>
+
+    <div class="invest r d3" style="margin-top:50px">
+      <div class="invest-card scale-in">
+        <span class="per">Inversión recomendada en pauta</span>
+        <div class="amount">$420.000<span class="imp">+ impuestos / mes</span></div>
+        <hr>
+        <div class="eqrow">
+          <div class="b"><div class="bv">$14.000</div><div class="bl">por día</div></div>
+          <span class="op">×</span>
+          <div class="b"><div class="bv">30</div><div class="bl">días</div></div>
+          <span class="op">=</span>
+          <div class="b"><div class="bv">Presencia<br>constante</div><div class="bl">todo el mes</div></div>
+        </div>
+      </div>
+      <ul class="bullets">
+        <li><span class="bi">1</span><p><b>Presencia sostenida.</b> Mantener la inversión los 30 días asegura que el mensaje esté presente cuando el médico decide derivar.</p></li>
+        <li><span class="bi">2</span><p><b>Cobertura real de la audiencia.</b> El presupuesto permite alcanzar a toda la audiencia objetivo, no solo a una fracción.</p></li>
+        <li><span class="bi">3</span><p><b>Segmentación precisa.</b> Por especialidad y cargo: oncología, hematología, mastología, urología, jefes y directores médicos.</p></li>
+        <li><span class="bi">4</span><p><b>Remarketing.</b> Reimpacto a quienes vieron los videos, visitaron la landing o interactuaron con el contenido.</p></li>
+      </ul>
+    </div>
+    <p class="r d4" style="margin-top:34px;color:var(--w-65);font-size:.95rem">No es un gasto. Es la inversión que sostiene la presencia continua durante todo el mes.</p>
+  </div>
+  <div class="sfoot"><span>Recomendación estratégica</span><span class="num">13 — Paid Media</span></div>
+</section>
+
+<!-- ============ 15 · LANDING PAGE ============ -->
+<section id="landing" data-label="Landing Page">
+  <div class="wrap">
+    <div class="eyebrow r">Landing Page</div>
+    <h2 class="h-lg r d1">Una landing para <span class="cy">derivantes.</span></h2>
+    <div class="landing r d2" style="margin-top:46px">
+      <div class="wf scale-in">
+        <div class="wf-bar"><span></span><span></span><span></span></div>
+        <div class="wf-hero"><div class="l1"></div><div class="cta"></div></div>
+        <div class="wf-3"><div></div><div></div><div></div></div>
+        <div class="wf-row" style="height:14px;width:70%"></div>
+        <div class="wf-row" style="height:14px;width:55%"></div>
+        <div class="wf-form">Formulario · Solicitar contacto</div>
+      </div>
+      <div>
+        <p class="lead" style="margin-bottom:24px">No solo un formulario: una propuesta de valor pensada para que el médico entienda en segundos por qué derivar a CETAC.</p>
+        <ul class="lp-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Propuesta de valor y diferenciales</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Proceso de derivación, paso a paso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Beneficios para el médico derivante</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Formulario y llamados a la acción claros</li>
+        </ul>
+        <p style="color:var(--w-65);margin-bottom:18px">Concentra el tráfico de la pauta en un destino diseñado para convertir consultas en derivaciones.</p>
+        <span class="note-pill"><b>Desarrollo adicional</b> · se cotiza por separado</span>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>El destino que convierte</span><span class="num">14 — Landing</span></div>
+</section>
+
+<!-- ============ 16 · PRODUCCIÓN PROFESIONAL ============ -->
+<section id="profesional" data-label="Producción incluida">
+  <div class="wrap">
+    <div class="evo r">
+      <div class="evo-bg"><img src="img/hospital.jpg" alt="CETAC Juncal"></div>
+      <div class="badge"><span style="width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)"></span>Una evolución del servicio</div>
+      <blockquote class="r d1">Incorporamos la producción audiovisual profesional dentro del servicio actual.</blockquote>
+      <p class="sign r d2">Entendiendo que hoy el contenido en video es una herramienta fundamental para alcanzar los objetivos de posicionamiento y captación, Popcorn integra esta producción como parte de un acompañamiento cada vez más integral y orientado a resultados.</p>
+    </div>
+  </div>
+  <div class="sfoot"><span>Visión estratégica · compromiso con los resultados</span><span class="num">15 — Servicio</span></div>
+</section>
+
+<!-- ============ 17 · CTA ============ -->
+<section id="cta" data-label="Próximos pasos">
+  <div class="wrap">
+    <div class="cta-ph r">
+      <div class="eyebrow" style="justify-content:center">Próximos pasos</div>
+      <h2 class="h-md" style="max-width:24ch;margin:0 auto">Definamos juntos cómo arrancar.</h2>
+      <p class="muted" style="margin:16px auto 0;max-width:48ch">Esta sección queda preparada para incorporar los llamados a la acción definitivos: agenda, aprobación de presupuesto y fecha de grabación.</p>
+      <div class="cta-slots">
+        <span class="cta-slot primary">Agendar reunión</span>
+        <span class="cta-slot">Aprobar propuesta</span>
+        <span class="cta-slot">Coordinar grabación</span>
+      </div>
+    </div>
+  </div>
+  <div class="sfoot"><span>A completar con el equipo</span><span class="num">16 — Acción</span></div>
+</section>
+
+<!-- ============ 18 · CIERRE ============ -->
+<section id="cierre" data-label="Cierre">
+  <div class="bg-photo center"><img src="img/cierre.jpg" alt="Acompañamiento médico"></div>
+  <div class="hero-orbits" style="left:-200px;right:auto"><div></div><div></div><div></div><div class="core"></div></div>
+  <div class="wrap">
+    <div class="eyebrow r" style="justify-content:center">Mensaje final</div>
+    <h2 class="close-title r d1">No proponemos una campaña.<br>Proponemos construir <span class="cy">confianza</span><br>antes de que necesiten derivar.</h2>
+    <p class="lead r d2" style="margin:28px auto 0;text-align:center">Queremos que CETAC sea la primera opción cuando un médico necesite derivar un paciente.</p>
+    <div class="close-sign r d3">
+      <div class="c-logo">
+        <span class="logo-img close" role="img" aria-label="Popcorn"></span>
+      </div>
+      <span class="close-tag">CETAC Juncal · Donde la confianza se transforma en acción.</span>
+    </div>
+  </div>
+  <div class="sfoot"><span>Popcorn · Marketing &amp; Comunicación</span><span class="num">somospopcorn.com</span></div>
+</section>
+
+<script>
+/* ===== Progreso + topbar ===== */
+const prog=document.getElementById('prog'),topbar=document.getElementById('topbar');
+function onScroll(){
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(scrollY/h*100)+'%';
+  topbar.classList.toggle('scrolled',scrollY>40);
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ===== Nav lateral (dots) ===== */
+const sections=[...document.querySelectorAll('section')];
+const dots=document.getElementById('dots');
+sections.forEach(s=>{
+  const a=document.createElement('a');
+  a.href='#'+s.id;
+  a.innerHTML='<span>'+(s.dataset.label||s.id)+'</span>';
+  dots.appendChild(a);
+});
+const dotEls=[...dots.children];
+
+/* ===== Scroll reveal ===== */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.r,.scale-in,#decision,.flowline').forEach(el=>io.observe(el));
+
+/* ===== Sección activa para dots ===== */
+const active=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i=sections.indexOf(e.target);
+      dotEls.forEach((d,k)=>d.classList.toggle('active',k===i));
+    }
+  });
+},{threshold:.5});
+sections.forEach(s=>active.observe(s));
+</script>
+</body>
+</html>
